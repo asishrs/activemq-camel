@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+    ">
+<bean id="shutdown" class="org.apache.camel.impl.DefaultShutdownStrategy">  
+        <property name="timeout" value="3000000"/>
+        </bean>
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+		<template id="template" />
+		<endpoint id="testInEP" uri="activemq:testInQ"/>
+		<endpoint id="testOutEP" uri="activemq:testOutQ"/>
+		<endpoint id="timerOutEP" uri="activemq:timerOutQ"/>
+		
+		<route id="OneQToAnotherQRoute">
+			<from uri="ref:testInEP" />
+			<log message="Got ${body}" loggingLevel="INFO" logName="org.yagna.samples.activemq.OneQToAnotherQRoute"/>
+			<to uri="ref:testOutEP"/>
+		</route>
+		
+		<route id="QToProcesorRoute">
+			<from uri="ref:testOutEP" />
+			<log message="Got ${body}" loggingLevel="INFO" logName="org.yagna.samples.activemq.QToProcesorRoute"/>
+			<to uri="qProcessor"/>
+		</route>
+		
+		<!-- This uses the camel timer component and send a ping message 5 time. -->
+		<!-- For more details read http://camel.apache.org/timer.html -->
+		<route id="TimerRoute">
+			<from uri="timer:MyTimer?period=1s&amp;repeatCount=5" />
+			<transform>
+				<simple>Ping ${date:now:yyyy-MM-dd HH:mm:ss}</simple>
+			</transform>
+			<log message="Got ${body}" loggingLevel="INFO" logName="org.yagna.samples.activemq.TimerRoute"/>
+			<to uri="timerProcessor" />
+		</route>
+	</camelContext>
+</beans>
