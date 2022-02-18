@@ -12,16 +12,16 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Spring -->
-		<spring-framework.version>4.1.5.RELEASE</spring-framework.version>
+		<spring-framework.version>5.2.19.RELEASE</spring-framework.version>
 
 		<!-- ActiveMq -->
-		<org.apache.activemq.version>5.11.1</org.apache.activemq.version>
+		<org.apache.activemq.version>5.15.14</org.apache.activemq.version>
 
 		<!-- Camel -->
-		<org.apache.camel.version>2.24.0</org.apache.camel.version>
+		<org.apache.camel.version>2.25.1</org.apache.camel.version>
 
 		<!-- Logging -->
-		<logback.version>1.2.0</logback.version>
+		<logback.version>1.2.7</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
 
 		<!-- Test -->
