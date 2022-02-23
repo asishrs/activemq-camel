@@ -18,7 +18,7 @@
 		<org.apache.activemq.version>5.15.14</org.apache.activemq.version>
 
 		<!-- Camel -->
-		<org.apache.camel.version>2.25.1</org.apache.camel.version>
+		<org.apache.camel.version>2.25.4</org.apache.camel.version>
 
 		<!-- Logging -->
 		<logback.version>1.2.7</logback.version>
