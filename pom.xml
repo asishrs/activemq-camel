@@ -15,7 +15,7 @@
 		<spring-framework.version>5.3.19</spring-framework.version>
 
 		<!-- ActiveMq -->
-		<org.apache.activemq.version>5.17.1</org.apache.activemq.version>
+		<org.apache.activemq.version>5.17.2</org.apache.activemq.version>
 
 		<!-- Camel -->
 		<org.apache.camel.version>2.25.4</org.apache.camel.version>
